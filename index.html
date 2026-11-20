@@ -3,40 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Můj Osobní Blog</title>
+  <title>Maturitní četba 2026 – Gymnázium AMAZON</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
   
   <style>
-    /* --- BAREVNÉ PROMĚNNÉ (Světlý & Tmavý režim) --- */
     :root {
-      --bg: #ffffff;
-      --bg-secondary: #f8fafc;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-hover: #f1f5f9;
       --text: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
       --accent: #2563eb;
-      --accent-hover: #1d4ed8;
-      --tag-bg: #eff6ff;
-      --tag-text: #1e40af;
-      --code-bg: #f1f5f9;
+      --accent-soft: #eff6ff;
+      --accent-text: #1d4ed8;
+      --success: #10b981;
+      --success-soft: #ecfdf5;
+      --shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
     }
 
     [data-theme="dark"] {
-      --bg: #0b0f19;
-      --bg-secondary: #111827;
+      --bg: #090d16;
+      --surface: #111827;
+      --surface-hover: #1e293b;
       --text: #f1f5f9;
       --text-muted: #94a3b8;
       --border: #1e293b;
       --accent: #60a5fa;
-      --accent-hover: #93c5fd;
-      --tag-bg: #1e293b;
-      --tag-text: #93c5fd;
-      --code-bg: #1e293b;
+      --accent-soft: #1e293b;
+      --accent-text: #93c5fd;
+      --success: #34d399;
+      --success-soft: #064e3b;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     }
 
-    /* --- ZÁKLADNÍ RESET A TYPOGRAFIE --- */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -47,78 +49,89 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      line-height: 1.5;
+      transition: background-color 0.25s, color 0.25s;
       -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 740px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 24px 64px;
     }
 
     /* --- HLAVIČKA --- */
     header {
-      padding: 36px 0 28px;
+      padding: 40px 0 32px;
       border-bottom: 1px solid var(--border);
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
-      gap: 16px;
+      align-items: flex-end;
+      gap: 20px;
     }
 
-    .brand {
-      text-decoration: none;
-      color: var(--text);
-      cursor: pointer;
+    .badge {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
     }
 
-    .brand h1 {
-      font-size: 1.35rem;
+    header h1 {
+      font-size: 1.9rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
     }
 
-    .brand p {
-      font-size: 0.875rem;
+    header p {
       color: var(--text-muted);
-      margin-top: 2px;
+      font-size: 0.95rem;
+      margin-top: 4px;
     }
 
-    .nav-actions {
+    .header-actions {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
     }
 
-    .nav-link {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-family: inherit;
-      font-size: 0.9rem;
+    .progress-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
       font-weight: 500;
-      cursor: pointer;
-      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow);
     }
 
-    .nav-link:hover, .nav-link.active {
-      color: var(--text);
+    .progress-pill strong {
+      color: var(--accent);
     }
 
     .theme-btn {
-      background: var(--bg-secondary);
+      background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text);
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       cursor: pointer;
+      font-size: 1.05rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      box-shadow: var(--shadow);
       transition: border-color 0.2s;
     }
 
@@ -126,22 +139,632 @@
       border-color: var(--text-muted);
     }
 
-    /* --- FILTRY A VYHLEDÁVÁNÍ --- */
-    .controls {
-      margin: 32px 0 24px;
+    /* --- OVLÁDACÍ LIŠTA --- */
+    .toolbar {
+      margin: 28px 0;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .tags {
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+      max-width: 420px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 16px 10px 38px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    .filter-group {
       display: flex;
-      flex-wrap: wrap;
       gap: 8px;
     }
 
-    .tag-btn {
-      background: var(--bg-secondary);
-      border:
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+
+    .filter-btn.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* --- MŘÍŽKA OKRUHŮ --- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+    }
+
+    .card-header {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topic-num {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .topic-lit {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .topic-lang {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* --- SEZNAM DĚL V KARTĚ --- */
+    .books-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .book-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      user-select: none;
+    }
+
+    .book-item:hover {
+      background-color: var(--surface-hover);
+    }
+
+    .book-item.read {
+      background-color: var(--success-soft);
+    }
+
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border-radius: 5px;
+      border: 1.5px solid var(--text-muted);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: white;
+      transition: all 0.15s;
+    }
+
+    .book-item.read .checkbox {
+      background-color: var(--success);
+      border-color: var(--success);
+    }
+
+    .book-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .book-item.read .book-title {
+      text-decoration: line-through;
+      opacity: 0.75;
+    }
+
+    .book-author {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div>
+        <span class="badge">Anglicko-české gymnázium AMAZON</span>
+        <h1>Maturitní četba 2026</h1>
+        <p>Seznam 25 maturitních témat a literárních děl k ústní zkoušce z ČJL</p>
+      </div>
+      <div class="header-actions">
+        <div class="progress-pill">
+          <span>Přečteno:</span>
+          <strong id="read-counter">0 / 75</strong>
+        </div>
+        <button class="theme-btn" id="theme-toggle" title="Přepnout tmavý/světlý režim">🌙</button>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Hledat autora, knihu nebo okruh..." />
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">Vše (25)</button>
+        <button class="filter-btn" data-filter="unread">Nepřečtené</button>
+        <button class="filter-btn" data-filter="read">Přečtené</button>
+      </div>
+    </div>
+
+    <main class="grid" id="topics-grid"></main>
+
+    <footer>
+      Kliknutím na knihu ji označíte jako přečtenou (stav se automaticky ukládá v prohlížeči).
+    </footer>
+  </div>
+
+  <script>
+    const MATURITA_DATA = [
+      {
+        num: 1,
+        lit: "Literatura starověku",
+        lang: "Jazykověda a její disciplíny",
+        books: [
+          { author: "Ivan Olbracht", title: "Biblické příběhy" },
+          { author: "Sofoklés", title: "Král Oidipus" },
+          { author: "Ovidius", title: "Umění milovat" }
+        ]
+      },
+      {
+        num: 2,
+        lit: "Středověká evropská a česká literatura",
+        lang: "Čeština – národní jazyk a jeho stratifikace",
+        books: [
+          { author: "Neznámý autor", title: "Beowulf" },
+          { author: "Neznámý autor", title: "Podkoní a žák" },
+          { author: "Neznámý autor", title: "Legenda o svaté Kateřině" }
+        ]
+      },
+      {
+        num: 3,
+        lit: "Renesance a humanismus v evropské a české literatuře",
+        lang: "Příbuznost jazyků",
+        books: [
+          { author: "Giovanni Boccaccio", title: "Dekameron" },
+          { author: "William Shakespeare", title: "Romeo a Julie" },
+          { author: "Geoffrey Chaucer", title: "Canterburské povídky" }
+        ]
+      },
+      {
+        num: 4,
+        lit: "Baroko v evropské a české literatuře",
+        lang: "Zvuková stránka jazyka",
+        books: [
+          { author: "John Milton", title: "Ztracený ráj" },
+          { author: "Jan Amos Komenský", title: "Labyrint světa a ráj srdce" },
+          { author: "Jan Amos Komenský", title: "Informatorium školy mateřské" }
+        ]
+      },
+      {
+        num: 5,
+        lit: "Klasicismus, osvícenství a preromantismus v evropské literatuře",
+        lang: "Grafická stránka jazyka",
+        books: [
+          { author: "Molière", title: "Lakomec" },
+          { author: "Daniel Defoe", title: "Robinson Crusoe" },
+          { author: "Johann Wolfgang Goethe", title: "Utrpení mladého Werthera" }
+        ]
+      },
+      {
+        num: 6,
+        lit: "Romantismus ve světové literatuře",
+        lang: "Slovní druhy a mluvnické kategorie",
+        books: [
+          { author: "Victor Hugo", title: "Chrám Matky Boží v Paříži" },
+          { author: "Alexandr Sergejevič Puškin", title: "Evžen Oněgin" },
+          { author: "Edgar Allan Poe", title: "Havran" }
+        ]
+      },
+      {
+        num: 7,
+        lit: "Národní obrození v české literatuře",
+        lang: "Rozvrstvení slovní zásoby",
+        books: [
+          { author: "František Ladislav Čelakovský", title: "Ohlas písní českých" },
+          { author: "František Ladislav Čelakovský", title: "Ohlas písní ruských" },
+          { author: "Václav Kliment Klicpera", title: "Divotvorný klobouk" }
+        ]
+      },
+      {
+        num: 8,
+        lit: "Romantismus v české literatuře",
+        lang: "Obohacování slovní zásoby a její změny; změny slovního významu",
+        books: [
+          { author: "Karel Hynek Mácha", title: "Máj" },
+          { author: "Karel Jaromír Erben", title: "Kytice z pověstí národních" },
+          { author: "Božena Němcová", title: "Babička" }
+        ]
+      },
+      {
+        num: 9,
+        lit: "Realismus a naturalismus ve světové literatuře 19. století",
+        lang: "Slovníky a jejich druhy",
+        books: [
+          { author: "Honoré de Balzac", title: "Otec Goriot" },
+          { author: "Émile Zola", title: "Zabiják" },
+          { author: "Gustave Flaubert", title: "Paní Bovaryová" }
+        ]
+      },
+      {
+        num: 10,
+        lit: "Česká realistická literatura 2. poloviny 19. století",
+        lang: "Tvoření slov",
+        books: [
+          { author: "Jan Neruda", title: "Balady a romance" },
+          { author: "Alois a Vilém Mrštíkové", title: "Maryša" },
+          { author: "Josef Karel Šlejhar", title: "Kuře melancholik" }
+        ]
+      },
+      {
+        num: 11,
+        lit: "Vývoj dramatu ve světě a v českých zemích do konce 19. století",
+        lang: "Skladba – věta jednoduchá, souvětí",
+        books: [
+          { author: "William Shakespeare", title: "Hamlet, princ dánský" },
+          { author: "Jaroslav Vrchlický", title: "Noc na Karlštejně" },
+          { author: "Nikolaj Vasiljevič Gogol", title: "Revizor" }
+        ]
+      },
+      {
+        num: 12,
+        lit: "Světová literatura na přelomu 19. a 20. století",
+        lang: "Větné členy",
+        books: [
+          { author: "Oscar Wilde", title: "Obraz Doriana Graye" },
+          { author: "Charles Baudelaire", title: "Květy zla" },
+          { author: "Paul Verlaine", title: "Saturnské básně" }
+        ]
+      },
+      {
+        num: 13,
+        lit: "Česká literatura od přelomu 19. a 20. století do konce 1. světové války",
+        lang: "Druhy vět podle postoje mluvčího ke skutečnosti",
+        books: [
+          { author: "Karel Hlaváček", title: "Pozdě k ránu" },
+          { author: "Petr Bezruč", title: "Slezské písně" },
+          { author: "Viktor Dyk", title: "Krysař" }
+        ]
+      },
+      {
+        num: 14,
+        lit: "Světová poezie v předválečném, válečném a meziválečném období",
+        lang: "Zvláštnosti a odchylky od pravidelné větné stavby",
+        books: [
+          { author: "Guillaume Apollinaire", title: "Alkoholy" },
+          { author: "Christian Morgenstern", title: "Šibeniční písně" },
+          { author: "Robinson Jeffers", title: "Hřebec grošák" }
+        ]
+      },
+      {
+        num: 15,
+        lit: "Světová próza v předválečném, válečném a meziválečném období",
+        lang: "Slovosled; druhy řeči",
+        books: [
+          { author: "Antoine de Saint-Exupéry", title: "Malý princ" },
+          { author: "Romain Rolland", title: "Petr a Lucie" },
+          { author: "Francis Scott Fitzgerald", title: "Velký Gatsby" }
+        ]
+      },
+      {
+        num: 16,
+        lit: "Světové a české drama 1. poloviny 20. století",
+        lang: "Slohotvorní činitelé",
+        books: [
+          { author: "Karel Čapek", title: "Bílá nemoc" },
+          { author: "Karel Čapek", title: "R.U.R." },
+          { author: "George Bernard Shaw", title: "Pygmalion" }
+        ]
+      },
+      {
+        num: 17,
+        lit: "Česká poezie od konce 1. světové války do konce 2. světové války",
+        lang: "Funkční styly, slohové postupy a slohové útvary",
+        books: [
+          { author: "Jiří Wolker", title: "Těžká hodina" },
+          { author: "Konstantin Biebl", title: "S lodí, jež dováží čaj a kávu" },
+          { author: "František Halas", title: "Naše paní Božena Němcová" }
+        ]
+      },
+      {
+        num: 18,
+        lit: "Česká próza od konce 1. světové války do konce 2. světové války",
+        lang: "Styl prostěsdělovací a jeho útvary",
+        books: [
+          { author: "Karel Čapek", title: "Povídky z jedné kapsy" },
+          { author: "Karel Poláček", title: "Bylo nás pět" },
+          { author: "Franz Kafka", title: "Proměna" }
+        ]
+      },
+      {
+        num: 19,
+        lit: "Světová poezie a próza od 2. poloviny 20. století po současnost",
+        lang: "Styl administrativní a jeho útvary",
+        books: [
+          { author: "Jerome David Salinger", title: "Kdo chytá v žitě" },
+          { author: "Daniel Keyes", title: "Růže pro Algernon" },
+          { author: "Haruki Murakami", title: "Norské dřevo" }
+        ]
+      },
+      {
+        num: 20,
+        lit: "Česká poezie od 2. poloviny 20. století po současnost",
+        lang: "Styl odborný a jeho útvary",
+        books: [
+          { author: "Jaroslav Seifert", title: "Maminka" },
+          { author: "Václav Hrabě", title: "Blues pro bláznivou holku" },
+          { author: "Jiří Hásek Krchovský", title: "Básně sebrané" }
+        ]
+      },
+      {
+        num: 21,
+        lit: "Česká próza od 2. poloviny 20. století po současnost",
+        lang: "Styl publicistický a jeho útvary",
+        books: [
+          { author: "Jan Otčenášek", title: "Romeo, Julie a tma" },
+          { author: "Ladislav Fuks", title: "Spalovač mrtvol" },
+          { author: "Ota Pavel", title: "Smrt krásných srnců" }
+        ]
+      },
+      {
+        num: 22,
+        lit: "České a světové drama 2. poloviny 20. století",
+        lang: "Styl umělecký a jeho útvary",
+        books: [
+          { author: "Václav Havel", title: "Audience" },
+          { author: "Samuel Beckett", title: "Čekání na Godota" },
+          { author: "Tennessee Williams", title: "Kočka na rozpálené plechové střeše" }
+        ]
+      },
+      {
+        num: 23,
+        lit: "Současná divadelní scéna a produkce",
+        lang: "Styl řečnický a jeho útvary",
+        books: [
+          { author: "William Shakespeare", title: "Zkrocení zlé ženy" },
+          { author: "Vítězslav Nezval", title: "Manon Lescaut" },
+          { author: "Ladislav Smoljak, Zdeněk Svěrák (DJC)", title: "České nebe" }
+        ]
+      },
+      {
+        num: 24,
+        lit: "Žena jako spisovatelka a hrdinka literárního díla",
+        lang: "Získávání a zpracování informací",
+        books: [
+          { author: "Jane Austen", title: "Pýcha a předsudek" },
+          { author: "Emily Brontëová", title: "Na Větrné hůrce" },
+          { author: "Anna Franková", title: "Deník Anny Frankové" }
+        ]
+      },
+      {
+        num: 25,
+        lit: "Literatura spojená s Prahou",
+        lang: "Všestranný jazykový rozbor",
+        books: [
+          { author: "Jan Neruda", title: "Povídky malostranské" },
+          { author: "Alois Jirásek", title: "Staré pověsti české" },
+          { author: "Jaroslav Seifert", title: "Kamenný most" }
+        ]
+      }
+    ];
+
+    let readBooks = JSON.parse(localStorage.getItem('maturita-read-books') || '[]');
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    const grid = document.getElementById('topics-grid');
+    const readCounter = document.getElementById('read-counter');
+    const searchInput = document.getElementById('search-input');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Tmavý / světlý režim
+    const savedTheme = localStorage.getItem('maturita-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      localStorage.setItem('maturita-theme', theme);
+    }
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    function getBookId(topicNum, bookIndex) {
+      return `${topicNum}-${bookIndex}`;
+    }
+
+    function toggleBook(bookId) {
+      if (readBooks.includes(bookId)) {
+        readBooks = readBooks.filter(id => id !== bookId);
+      } else {
+        readBooks.push(bookId);
+      }
+      localStorage.setItem('maturita-read-books', JSON.stringify(readBooks));
+      render();
+    }
+
+    function updateCounter() {
+      const totalBooks = MATURITA_DATA.reduce((sum, t) => sum + t.books.length, 0);
+      readCounter.textContent = `${readBooks.length} / ${totalBooks}`;
+    }
+
+    function render() {
+      updateCounter();
+      const q = searchQuery.toLowerCase().trim();
+
+      const filteredTopics = MATURITA_DATA.map(topic => {
+        const matchingBooks = topic.books
+          .map((book, idx) => ({ ...book, id: getBookId(topic.num, idx) }))
+          .filter(book => {
+            const isRead = readBooks.includes(book.id);
+            if (currentFilter === 'read' && !isRead) return false;
+            if (currentFilter === 'unread' && isRead) return false;
+
+            if (!q) return true;
+            return (
+              book.author.toLowerCase().includes(q) ||
+              book.title.toLowerCase().includes(q) ||
+              topic.lit.toLowerCase().includes(q) ||
+              topic.lang.toLowerCase().includes(q) ||
+              String(topic.num) === q
+            );
+          });
+
+        return { ...topic, matchingBooks };
+      }).filter(topic => topic.matchingBooks.length > 0);
+
+      if (filteredTopics.length === 0) {
+        grid.innerHTML = `<div class="empty-state">Žádná literární díla neodpovídají zadanému filtru.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filteredTopics.map(topic => `
+        <article class="card">
+          <div class="card-header">
+            <span class="topic-num">Okruh ${topic.num}</span>
+            <h2 class="topic-lit">${topic.lit}</h2>
+            <p class="topic-lang">${topic.lang}</p>
+          </div>
+          <ul class="books-list">
+            ${topic.matchingBooks.map(book => {
+              const isRead = readBooks.includes(book.id);
+              return `
+                <li class="book-item ${isRead ? 'read' : ''}" onclick="toggleBook('${book.id}')">
+                  <div class="checkbox">${isRead ? '✓' : ''}</div>
+                  <div class="book-info">
+                    <span class="book-title">${book.title}</span>
+                    <span class="book-author">${book.author}</span>
+                  </div>
+                </li>
+              `;
+            }).join('')}
+          </ul>
+        </article>
+      `).join('');
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      render();
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>
